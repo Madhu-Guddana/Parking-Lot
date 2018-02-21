@@ -1,3 +1,5 @@
+Simple Parking Lot System, created using Python 2.7
+Strinctly Followed PEP 8 standard
 --------------------------------------------
 Copyright (c) 2018. All rights reserved.
 
