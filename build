@@ -1,0 +1,40 @@
+#!/bin/sh
+
+##########################################
+# Copyright (c) 2018. All rights reserved.
+#
+# Author: Madhu.Guddana@gmail.com
+##########################################
+
+
+python $PROJECT_DIR/unittests/test_interface.py
+test_interface=$?
+python $PROJECT_DIR/unittests/test_parking_system.py
+test_parking_system=$?
+python $PROJECT_DIR/unittests/test_vehicle.py
+test_vehicle=$?
+
+pylint --rcfile=$PROJECT_DIR/bin/rcfile $PROJECT_DIR/lib/utils.py
+pylint_utils=$?
+pylint --rcfile=$PROJECT_DIR/bin/rcfile $PROJECT_DIR/source/interface.py
+pylint_interface=$?
+pylint --rcfile=$PROJECT_DIR/bin/rcfile $PROJECT_DIR/source/parking_system.py
+pylint_parking_system=$?
+pylint --rcfile=$PROJECT_DIR/bin/rcfile $PROJECT_DIR/source/vehicle.py
+pylint_vehicle=$?
+
+echo "******************* UNIT TEST RESULT ****************************"
+
+echo "Name                        Result [0:PASS, else FAIL]"
+echo "test_interface.py:          $test_interface"
+echo "test_parking_system.py:     $test_parking_system"
+echo "test_vehicle.py:            $test_vehicle"
+
+echo "**************************** PYLINT RESULT **********************"
+
+echo "Name                   Result [0:PASS, else FAIL]"
+echo "utils.py:              $pylint_utils"
+echo "interface.py:          $pylint_interface"
+echo "parking_system.py:     $pylint_parking_system"
+echo "vehicle.py:            $pylint_vehicle"
+echo "*****************************************************************"
